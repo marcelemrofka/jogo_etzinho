@@ -16,24 +16,33 @@ public class Player : MonoBehaviour
     }
 
     void Update()
+{
+    float h = Input.GetAxis("Horizontal");
+    float v = Input.GetAxis("Vertical");
+
+    // Movimento relativo à câmera
+    Vector3 forward = Camera.main.transform.forward;
+    Vector3 right = Camera.main.transform.right;
+
+    // Mantém movimento no plano XZ
+    forward.y = 0f;
+    right.y = 0f;
+    forward.Normalize();
+    right.Normalize();
+
+    Vector3 movement = h * right + v * forward;
+
+    if (movement.magnitude > 1f)
+        movement.Normalize();
+
+    controller.Move(movement * speed * Time.deltaTime);
+
+    if (movement != Vector3.zero)
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(h, 0f, v);
-
-        if (movement.magnitude > 1f)
-            movement.Normalize();
-
-        controller.Move(movement * speed * Time.deltaTime);
-
-        if (movement != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.2f);
-        }
+        Quaternion targetRotation = Quaternion.LookRotation(movement);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.2f);
     }
-
+}
     private void OnTriggerEnter(Collider other)
     {
         // Verifica se o objeto tem o script Coin
