@@ -25,9 +25,16 @@ public class Coin : MonoBehaviour
         transform.Rotate(Vector3.up * 50f * Time.deltaTime);
     }
 
-    public void Collect()
+    private void OnTriggerEnter(Collider other)
     {
-        GameManager.instance.AddCoin();
+        // Procura o Placar na cena e adiciona uma moeda
+        Placar placar = FindObjectOfType<Placar>();
+        if (placar != null)
+        {
+            placar.AdicionarMoeda();
+        }
+
+        // Remove a moeda da cena
         Destroy(gameObject);
     }
 }
