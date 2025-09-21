@@ -2,10 +2,32 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    // Chamada quando o player coleta a moeda
+    public float floatAmplitude = 0.2f; // quanto ela sobe acima da posição base
+    public float floatSpeed = 1f;       // velocidade do movimento
+    public float hoverHeight = 0.9f;    // altura mínima acima do chão
+
+    private Vector3 startPos;
+
+    void Start()
+    {
+        // posição base da moeda, elevada acima do chão
+        startPos = transform.position;
+        startPos.y += hoverHeight; // eleva a moeda um pouco
+    }
+
+    void Update()
+    {
+        // PingPong varia de 0 até floatAmplitude, sempre acima do chão
+        float newY = startPos.y + Mathf.PingPong(Time.time * floatSpeed, floatAmplitude);
+        transform.position = new Vector3(startPos.x, newY, startPos.z);
+
+        // girar lentamente
+        transform.Rotate(Vector3.up * 50f * Time.deltaTime);
+    }
+
     public void Collect()
     {
-        GameManager.instance.AddCoin(); // Atualiza o placar
-        Destroy(gameObject);            // Remove a moeda da cena
+        GameManager.instance.AddCoin();
+        Destroy(gameObject);
     }
 }
