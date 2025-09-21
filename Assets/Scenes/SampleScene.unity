@@ -872,7 +872,7 @@ PrefabInstance:
     - target: {fileID: 8768507447841134649, guid: b588a9a1785fe144e9a427a8163a6dca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768507447841134649, guid: b588a9a1785fe144e9a427a8163a6dca,
         type: 3}
@@ -4889,7 +4889,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 150b771c021f45d48873c0d8caddd485,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 150b771c021f45d48873c0d8caddd485,
         type: 3}
@@ -4992,6 +4992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   speed: 3
+  gravity: -9.81
 --- !u!143 &595563507
 CharacterController:
   m_ObjectHideFlags: 0
