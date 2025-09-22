@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private int coins = 0;
+    public GameObject portal;
 
     void Start()
     {
@@ -55,6 +56,8 @@ public class Player : MonoBehaviour
 
         // Aplica gravidade
         controller.Move(velocity * Time.deltaTime);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,6 +68,10 @@ public class Player : MonoBehaviour
             coins++;
             Debug.Log("Moeda coletada! Total: " + coins);
             Destroy(other.gameObject);
+        }
+        if (coins > 4)
+        {
+            portal.SetActive(false);
         }
     }
 }
