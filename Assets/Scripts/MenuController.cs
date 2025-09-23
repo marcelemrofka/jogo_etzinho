@@ -38,7 +38,7 @@ public class MenuController : MonoBehaviour
         indexAtual++;
 
         // se passou do último
-        if (indexAtual == 4)
+        if (indexAtual == 5)
         {
             string cenaNome = "SampleScene";
 
