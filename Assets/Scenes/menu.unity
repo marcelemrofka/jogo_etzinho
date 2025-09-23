@@ -281,7 +281,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 549742598}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1443216363}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: BtnChangeImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &549742598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,7 +1091,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bcd08df200a2245ba9c471f56369dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
-  imagem01: {fileID: 775699197}
+  imagens:
+  - {fileID: 775699197}
+  - {fileID: 767281977}
+  - {fileID: 1415633201}
+  - {fileID: 1323148872}
+  indexAtual: 0
 --- !u!1 &1550371315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bcd08df200a2245ba9c471f56369dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
-  imagem01: {fileID: 0}
+  imagens: []
+  indexAtual: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
