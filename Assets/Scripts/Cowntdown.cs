@@ -5,7 +5,7 @@ using TMPro;
 public class Countdown : MonoBehaviour
 {
     public TMP_Text TextoContador;
-    public float tempo = 60f;
+    public float tempo = 90f;
 
     void Update()
     {
@@ -24,10 +24,16 @@ public class Countdown : MonoBehaviour
             SceneManager.LoadScene("derrota");
         }
     }
-
-    // 🔥 MÉTODO NOVO → permite adicionar tempo (+5, +10, etc.)
     public void AdicionarTempo(float quantidade)
     {
         tempo += quantidade;
     }
+
+     public void RemoverTempo(float quantidade)
+{
+    tempo -= quantidade;
+
+    if (tempo < 0)
+        tempo = 0; 
+}
 }

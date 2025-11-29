@@ -1,18 +1,17 @@
 using UnityEngine;
 
-public class ItemVerde : MonoBehaviour
+public class bomba : MonoBehaviour
 {
-    public float tempoAdicionar = 5f;
+    public float tempoRemover = 15f;
 
     private void OnTriggerEnter(Collider other)
     {
-        // testa pelo componente Player (não precisa usar Tag)
         Player p = other.GetComponent<Player>();
 
         if (p != null)
         {
             Countdown cont = FindObjectOfType<Countdown>();
-            cont.AdicionarTempo(tempoAdicionar);
+           cont.RemoverTempo(tempoRemover);
             Destroy(gameObject);
         }
     }
