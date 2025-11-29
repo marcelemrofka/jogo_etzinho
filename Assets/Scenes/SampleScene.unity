@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown
   TextoContador: {fileID: 2126555441}
-  tempo: 10
+  tempo: 60
 --- !u!4 &192482952
 Transform:
   m_ObjectHideFlags: 0

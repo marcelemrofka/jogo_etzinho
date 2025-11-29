@@ -6,7 +6,7 @@ using TMPro;
 public class Countdown : MonoBehaviour
 {
    public TMP_Text TextoContador;
-    public float tempo = 10f; // tempo inicial
+    public float tempo = 60f; 
 
     void Update()
     {
@@ -21,9 +21,8 @@ public class Countdown : MonoBehaviour
         }
         else
         {
-            TextoContador.text = "00:00";
+            TextoContador.text = "Tempo: 00:00";
 
-            // Trocar para a cena "Saida"
             SceneManager.LoadScene("derrota");
         }
     }
