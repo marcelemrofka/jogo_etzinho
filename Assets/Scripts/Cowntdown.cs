@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Countdown : MonoBehaviour
 {
-   public TMP_Text TextoContador;
-    public float tempo = 60f; 
+    public TMP_Text TextoContador;
+    public float tempo = 60f;
 
     void Update()
     {
@@ -21,9 +20,14 @@ public class Countdown : MonoBehaviour
         }
         else
         {
-            TextoContador.text = "Tempo: 00:00";
-
+            TextoContador.text = "00:00";
             SceneManager.LoadScene("derrota");
         }
+    }
+
+    // 🔥 MÉTODO NOVO → permite adicionar tempo (+5, +10, etc.)
+    public void AdicionarTempo(float quantidade)
+    {
+        tempo += quantidade;
     }
 }
