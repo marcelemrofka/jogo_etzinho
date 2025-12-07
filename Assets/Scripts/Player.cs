@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 3f;
-    public float gravity = -9.81f; // gravidade manual
+    public float gravity = -9.81f; 
     private CharacterController controller;
     private Vector3 velocity;
     private int coins = 0;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        controller.stepOffset = 0f; // impede subir obstáculos automaticamente
+        controller.stepOffset = 0f; 
     }
 
     void Update()
@@ -44,17 +44,16 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.2f);
         }
 
-        // Gravidade manual
+    
         if (controller.isGrounded && velocity.y < 0)
         {
-            velocity.y = -0.1f; // força pequena para manter no chão
+            velocity.y = -0.1f; 
         }
         else
         {
             velocity.y += gravity * Time.deltaTime;
         }
 
-        // Aplica gravidade
         controller.Move(velocity * Time.deltaTime);
 
 

@@ -14,7 +14,6 @@ public class MenuController : MonoBehaviour
             return;
         }
 
-        // só a primeira imagem fica ativa no início
         for (int i = 0; i < imagens.Length; i++)
         {
             imagens[i].SetActive(i == indexAtual);
@@ -31,18 +30,14 @@ public class MenuController : MonoBehaviour
             return;
         }
 
-        // desativa a imagem atual
         imagens[indexAtual].SetActive(false);
 
-        // avança índice
         indexAtual++;
 
-        // se passou do último
         if (indexAtual == 6)
         {
             string cenaNome = "SampleScene";
 
-            // verifica se a cena existe nas Build Settings
             if (SceneExists(cenaNome))
             {
                 Debug.Log("Carregando cena: " + cenaNome);
@@ -55,11 +50,9 @@ public class MenuController : MonoBehaviour
             return;
         }
 
-        // ativa a próxima
         imagens[indexAtual].SetActive(true);
     }
 
-    // Função para checar se a cena existe
     private bool SceneExists(string nomeCena)
     {
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
