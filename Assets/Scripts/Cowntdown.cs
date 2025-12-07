@@ -5,7 +5,7 @@ using TMPro;
 public class Countdown : MonoBehaviour
 {
     public TMP_Text TextoContador;
-    public float tempo = 90f;
+    public float tempo = 120f;
 
     void Update()
     {
