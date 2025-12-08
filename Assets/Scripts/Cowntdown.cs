@@ -5,7 +5,20 @@ using TMPro;
 public class Countdown : MonoBehaviour
 {
     public TMP_Text TextoContador;
-    public float tempo = 120f;
+    private float tempo;
+
+    void Start()
+    {
+        int dificuldade = PlayerPrefs.GetInt("Game_Difficulty", 1);
+
+        switch (dificuldade)
+        {
+            case 1: tempo = 120f; break;  // 2:00
+            case 2: tempo = 90; break;  // 1:30
+            case 3: tempo = 60f; break;  // 1:00
+        }
+    }
+
 
     void Update()
     {
@@ -24,16 +37,17 @@ public class Countdown : MonoBehaviour
             SceneManager.LoadScene("derrota");
         }
     }
+
     public void AdicionarTempo(float quantidade)
     {
         tempo += quantidade;
     }
 
-     public void RemoverTempo(float quantidade)
-{
-    tempo -= quantidade;
+    public void RemoverTempo(float quantidade)
+    {
+        tempo -= quantidade;
 
-    if (tempo < 0)
-        tempo = 0; 
-}
+        if (tempo < 0)
+            tempo = 0;
+    }
 }
