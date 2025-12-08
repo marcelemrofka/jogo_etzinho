@@ -9,7 +9,7 @@ public class Countdown : MonoBehaviour
 
     void Start()
     {
-        int dificuldade = PlayerPrefs.GetInt("Game_Difficulty", 1);
+        int dificuldade = PlayerPrefs.GetInt("Game_Difficulty", 2);
 
         switch (dificuldade)
         {

@@ -16,34 +16,66 @@ public class DifficultyPanelController : MonoBehaviour
         if (panel != null) 
             panel.SetActive(false);
 
-        // Carrega dificuldade salva do PlayerPrefs
-        int dificuldade = PlayerPrefs.GetInt("Game_Difficulty", 1);
+        int dificuldade = PlayerPrefs.GetInt("Game_Difficulty", 2);
 
-        if (difficultySlider != null)
-        {
-            difficultySlider.minValue = 1;
-            difficultySlider.maxValue = 3; // agora são 3 dificuldades
-            difficultySlider.wholeNumbers = true;
-            difficultySlider.value = dificuldade;
-
-            UpdateInstructionText(dificuldade);
-
-            difficultySlider.onValueChanged.AddListener(OnSliderChanged);
-        }
+        SetupSlider(dificuldade); // <<< CHAMAR AQUI TAMBÉM
 
         if (closeButton != null)
             closeButton.onClick.AddListener(ClosePanel);
+
+        if (difficultyValueText != null)
+            difficultyValueText.text = GetDifficultyName(dificuldade);
+
     }
 
     public void OpenPanel()
     {
-        if (panel != null) panel.SetActive(true);
+        if (panel != null)
+        {
+            panel.SetActive(true);
+
+            int dificuldade = PlayerPrefs.GetInt("Game_Difficulty", 2);
+            SetupSlider(dificuldade); // <<< GARANTE QUE ABRE CORRETO
+        }
     }
 
     public void ClosePanel()
     {
         if (panel != null) panel.SetActive(false);
     }
+
+    private void SetupSlider(int dificuldade)
+    {
+        if (difficultySlider != null)
+        {
+            difficultySlider.minValue = 1;
+            difficultySlider.maxValue = 3;
+            difficultySlider.wholeNumbers = true;
+
+            difficultySlider.onValueChanged.RemoveAllListeners();
+            difficultySlider.value = dificuldade;
+
+            // ATUALIZA O TEXTO DO VALOR IMEDIATAMENTE
+            if (difficultyValueText != null)
+                difficultyValueText.text = GetDifficultyName(dificuldade);
+
+            UpdateInstructionText(dificuldade);
+
+            difficultySlider.onValueChanged.AddListener(OnSliderChanged);
+        }
+    }
+
+    private string GetDifficultyName(int v)
+    {
+        return v switch
+        {
+            1 => "Fácil",
+            2 => "Médio",
+            3 => "Difícil",
+            _ => "Médio"
+        };
+    }
+
 
     public void OnSliderChanged(float value)
     {
@@ -53,7 +85,8 @@ public class DifficultyPanelController : MonoBehaviour
         PlayerPrefs.Save();
 
         if (difficultyValueText != null)
-            difficultyValueText.text = v.ToString();
+            difficultyValueText.text = GetDifficultyName(v);
+
 
         UpdateInstructionText(v);
     }
@@ -62,8 +95,8 @@ public class DifficultyPanelController : MonoBehaviour
     {
         string tempo = v switch
         {
-            1 => "1:30",
-            2 => "1:15",
+            1 => "2:00",
+            2 => "1:30",
             3 => "1:00",
             _ => "1:30"
         };
